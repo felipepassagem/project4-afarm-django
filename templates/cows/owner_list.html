@@ -1,0 +1,43 @@
+{% extends 'busers/base.html' %}
+{% block content %}
+{% include 'partials/_navbar-in.html' %}
+{% include 'partials/_alerts.html' %}
+
+<div class="container-fluid h-100 pt-3">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card-body">
+
+            <table class="table table-striped table-bordered table-hover table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" style="text-align: center; vertical-align: middle;">Nome</th>
+                  <th scope="col" style="text-align: center; vertical-align: middle;">Telefone</th>
+                  <th scope="col" style="text-align: center; vertical-align: middle;">Data de nascimento</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for people in peoples %}
+                <tr>
+                  <th scope="row" style="text-align: center; vertical-align: middle;">{{people.first_name}} {{people.last_name}}</th>
+                  <td style="text-align: center; vertical-align: middle;">
+                  {{people.phone}}
+                  </td>
+                  <td style="text-align: center; vertical-align: middle;">
+                  {{people.birth_date|date:"d/m/Y" }}
+                  </td>
+                  <td style="text-align: center; vertical-align: middle;">
+                  <a href="{% url 'update_owner' people.id %}"><button type="button" class="btn btn-success">Edit</button></a>
+                  <a href="{% url 'delete_owner' people.id %}"><button type="button" class="btn btn-danger">Del</button></a>
+                  </td>
+                </tr>
+            {% endfor %}
+              </tbody>
+            </table>
+            
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

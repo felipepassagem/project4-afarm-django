@@ -1,0 +1,25 @@
+{% extends 'busers/base.html' %}
+{% block content %}
+{% include 'partials/_navbar-in.html' %}
+{% include 'partials/_alerts.html' %}
+<div class="container h-100 pt-5">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6 pb-5">
+        <div class="card">
+  <div class="card-header">
+    Adicionar novo animal
+  </div>
+  <div class="card-body">
+    
+                <form action='add_cow' method=POST>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Submit" class="btn btn-secondary">
+        </form>
+  </div>
+</div>
+
+        </div>
+    </div>
+</div>
+{%endblock%}

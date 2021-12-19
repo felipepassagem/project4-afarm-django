@@ -1,0 +1,30 @@
+{% extends 'busers/base.html' %}
+{% block content %}
+{% include 'partials/_navbar-in.html' %}
+{% include 'partials/_alerts.html' %}
+
+<div class="container-fluid h-100 pt-3">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 col-md-12 col-lg-12">
+
+            {% for farm in farms %}
+                <div class="card">
+                    <div class="card-header">
+                        {{farm.farm_name}}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">Latitude: {{farm.coord_lat}}</p>
+                        <p class="card-title">Longitude: {{farm.coord_long}}</p>
+                        
+                        <a href="{% url "update_farm" farm.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url "delete_farm" farm.id %}" class="btn btn-primary">Delete</a>
+                    </div>
+                    </div>
+            {% endfor %}
+
+            
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'busers/base.html' %}
+{% load static %}
+{%block style%}
+<link href="{% static 'dashboard/css/styles.css' %}" rel="stylesheet" />
+{%endblock%}
+{%block content%}
+    <script type="text/javascript" src="{% static "dashboard/js/fusioncharts.js" %}"></script>
+    <script type="text/javascript" src="{% static "dashboard/js/fusioncharts.charts.js" %}"></script>
+    <script type="text/javascript" src="{% static "dashboard/js/themes/fusioncharts.theme.fusion.js" %}"></script>
+{% include 'partials/_navbar-in.html' %}
+
+<div class="container-fluid">
+<!--  CARDS  -->
+  <div class="row" id="cards">
+          <div class="col-sm pt-3">
+              <div class="card shadow rounded text-center">
+                  <div class="card-body bg-success" id="card-income">
+                      <h5 class="card-title">Total de Animais</h5>
+                      <p class="card-text text-dark">{{n_animals}}</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm pt-3 ">
+              <div class="card shadow rounded text-center">
+                  <div class="card-body bg-info " id="card-outcome">
+                      <h5 class="card-title ">Total de Vacas</h5>
+                      <p class="card-text text-dark">{{n_cows}}</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm pt-3">
+              <div class="card shadow rounded text-center">
+                  <div class="card-body bg-light" id="card-balance">
+                      <h5 class="card-title">Total de Bezerros</h5>
+                      <p class="card-text text-dark">{{n_bez}}</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm pt-3">
+              <div class="card shadow rounded text-center">
+                  <div class="card-body bg-primary" id="card-balance">
+                      <h5 class="card-title">Total de Bois</h5>
+                      <p class="card-text text-dark">{{n_bull}}</p>
+                  </div>
+              </div>
+          </div>
+         
+        </div>
+<!--  CARDS  -->
+
+
+<!--Primeira row-->
+  <div class="row justify-content-center align-items-center p-3" id="" >
+        <div class="col-md-6 " align="center" id="asd">
+        <div class="border shadow p-3 mb-5 bg-white rounded">
+          <nav clas="nav justify-content-center">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#cowtype_column_chart-container" role="tab" aria-controls="nav-home" aria-selected="false">Col</a>
+              <a class="nav-item nav-link " id="nav-profile-tab" data-toggle="tab" href="#cowtype_pie_chart-container" role="tab" aria-controls="nav-profile" aria-selected="false">Pie</a>
+              
+          </nav>
+    <ul>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="cowtype_column_chart-container" role="tabpanel" aria-labelledby="nav-home-tab">{{cowtype_column_chart|safe}}</div>
+            <div class="tab-pane fade show " id="cowtype_pie_chart-container" role="tabpanel" aria-labelledby="nav-profile-tab">{{cowtype_pie_chart|safe}}</div>
+          </div>
+        </div>
+        </div>
+    </ul>
+
+    <div class="col-md-6 " align="center" id="g-div">
+    <div class="border shadow p-3 mb-5 bg-white rounded">
+          <nav clas="nav justify-content-center">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#owner_animal_chart_pie-container" role="tab" aria-controls="nav-home" aria-selected="true">Pie</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#owner_animal_chart_col-container" role="tab" aria-controls="nav-profile" aria-selected="false">Col</a>
+            </div>
+          </nav>
+            <ul>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="owner_animal_chart_pie-container" role="tabpanel" aria-labelledby="nav-home-tab">{{owner_animal_chart_pie|safe}}</div>
+                <div class="tab-pane fade" id="owner_animal_chart_col-container" role="tabpanel" aria-labelledby="nav-profile-tab">{{owner_animal_chart_col|safe}}</div>
+              </div>
+            </ul>
+            </div>
+        </div>
+  </div>
+<!--fim da Primeira row-->
+
+          
+  </div>
+
+{%endblock%}
+
+<!--cards-->
